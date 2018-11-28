@@ -1,5 +1,5 @@
 const pkg = require('./package')
-
+const webpack = require('webpack')
 module.exports = {
   mode: 'universal',
 
@@ -34,7 +34,9 @@ module.exports = {
   ** Plugins to load before mounting the App
   */
   plugins: [
-    '@/plugins/element-ui'
+    '@/plugins/element-ui',
+    '@/plugins/cookie',
+    { src: '@/plugins/editor', ssr: false }
   ],
 
   /*
@@ -60,6 +62,13 @@ module.exports = {
     */
     extend(config, ctx) {
       
-    }
+    },
+    extractCSS: { allChunks: true },
+    plugins: [
+      new webpack.ProvidePlugin({
+        'window.Quill': 'quill/dist/quill.js',
+        'Quill': 'quill/dist/quill.js'
+      })
+    ]
   }
 }
