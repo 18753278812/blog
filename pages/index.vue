@@ -18,14 +18,23 @@
       </div>
     </div>
     你好，{{userinfo}}
-    <el-button @click="user">获取用户信息</el-button>
+    <el-button @click="user">获取用户信息git提交测试</el-button>
     <el-button @click="logout">登出</el-button>
+    <div
+      v-for="item in articleList"
+      :key="item.id"
+    >
+      <nuxt-link :to="{path: '/detail?id=' + item.id}">{{item.title}}</nuxt-link>
+      {{formatTime(item.date)}}
+    </div>
   </section>
 </template>
 
 <script>
 import Logo from '~/components/Logo.vue'
 import { login, user, logout } from '~/api/user'
+import { getArticleList } from '~/api/article'
+import { formatTime } from '~/utils'
 export default {
   components: {
     Logo
@@ -37,10 +46,19 @@ export default {
       userinfo: ''
     }
   },
+  asyncData() {
+    return getArticleList().then(res => {
+      return {
+        articleList: res.data.data
+      }
+    })
+  },
   beforeMount() {
-
+    console.log(this)
+    fetch('https://10.138.111.13:8089/address/findAllProvince')
   },
   methods: {
+    formatTime,
     login() {
       login({
         username: this.username,
