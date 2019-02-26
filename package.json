@@ -11,7 +11,6 @@
     "generate": "nuxt generate"
   },
   "dependencies": {
-    "@nuxtjs/axios": "^5.0.0",
     "body-parser": "^1.18.3",
     "cross-env": "^5.2.0",
     "element-ui": "^2.4.6",
@@ -30,6 +29,7 @@
     "vue-quill-editor": "^3.0.6"
   },
   "devDependencies": {
+    "axios": "^0.18.0",
     "eslint-config-prettier": "^3.1.0",
     "eslint-plugin-prettier": "2.6.2",
     "nodemon": "^1.11.0",

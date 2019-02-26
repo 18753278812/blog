@@ -18,7 +18,7 @@
       </div>
     </div>
     你好，{{userinfo}}
-    <el-button @click="user">获取用户信息git提交测试</el-button>
+    <el-button @click="user">获取用户信息</el-button>
     <el-button @click="logout">登出</el-button>
     <div
       v-for="item in articleList"
@@ -54,8 +54,6 @@ export default {
     })
   },
   beforeMount() {
-    console.log(this)
-    fetch('https://10.138.111.13:8089/address/findAllProvince')
   },
   methods: {
     formatTime,
